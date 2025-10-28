@@ -3,7 +3,7 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   turbopack: {
     resolveAlias: {
-      '@components': './_components',
+      '@components': './components',
       '@lib': './lib',
       '@hooks': './hooks',
       '@types': './types',
