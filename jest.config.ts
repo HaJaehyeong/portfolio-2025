@@ -10,7 +10,7 @@ const config: Config = {
     '^@/(.*)$': '<rootDir>/$1',
     '\\.(css|scss|sass)$': 'identity-obj-proxy',
   },
-  testPathIgnorePatterns: ['/node_modules/', '/.next/'],
+  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'],
   coverageProvider: 'v8',
 };
 
