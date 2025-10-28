@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
     },
     resolveExtensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
   },
+  // NOTE(hajae): 개발 과정에서 파일 시스템 캐싱을 지원하여 실행 사이에 컴파일러 아티팩트를 디스크에 저장하여 재시작 시 컴파일 시간을 크게 단축
+  experimental: {
+    turbopackFileSystemCacheForDev: true,
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60,
