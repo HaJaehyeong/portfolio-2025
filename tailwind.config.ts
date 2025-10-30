@@ -3,7 +3,7 @@ import typography from '@tailwindcss/typography';
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
-  darkMode: ['class', '[data-theme="dark"]'],
+  darkMode: 'media',
   content: ['./components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}'],
   plugins: [forms, typography],
 };
