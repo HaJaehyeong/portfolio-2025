@@ -6,7 +6,7 @@ export default function Home() {
       <Header />
 
       <div className="mx-64">
-        <div className="w-full h-1000">임시 body</div>
+        <div className="w-full h-1000 bg-card">임시 body</div>
       </div>
     </main>
   );
