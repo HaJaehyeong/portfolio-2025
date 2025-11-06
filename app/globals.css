@@ -1,98 +1,109 @@
 @import 'tailwindcss';
 
+/* NOTE(hajae): where절은 .dark 및 그 자손 요소을 가르킴
+@custom-variant 다음에 선언된 변수은 ${변수명}:utility-class와 같이 사용 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* NOTE(hajae): Tailwind v4이상에서는 tailwind.config.ts 에서 테마를 설정하지않고 아래와 같이 설정하는 것이 권장방식 */
+@theme {
+  --color-primary: #2c3e50;
+  --color-secondary: #b0a695;
+  --color-info: #5a9bd5;
+  --color-success: #4e9f3d;
+  --color-error: #c0392b;
+  --color-warning: #e8a317;
+  --color-background: #f9f7f3;
+  --color-surface: #ffffff;
+  --color-card: #ffffff;
+
+  --color-primary-hover: #34495e;
+  --color-secondary-hover: #a48f7d;
+  --color-primary-border: #5e6e80;
+  --color-secondary-border: #c2b9a8;
+
+  --color-text: #2e2e2e;
+  --color-text-secondary: #6b6b6b;
+  --color-text-muted: #9a9a9a;
+
+  --color-background-alt: #f2efe9;
+  --color-background-hover: #ece8e1;
+  --color-background-disabled: #edecea;
+
+  --color-surface-border: #e1e1e1;
+  --color-surface-hover: #f3f1ec;
+
+  --color-input-bg: #ffffff;
+  --color-input-border: #cfcfcf;
+  --color-input-focus: #5a9bd5;
+
+  --color-card-bg: #ffffff;
+  --color-card-border: #e3e1dc;
+
+  --color-btn-primary-text: #ffffff;
+  --color-btn-secondary-text: #2c3e50;
+  --color-btn-disabled-bg: #e0dfdc;
+  --color-btn-disabled-text: #a0a0a0;
+
+  --color-border: #dadada;
+  --color-overlay: rgba(0, 0, 0, 0.35);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.dark {
+  --color-primary: #6b7a8f;
+  --color-secondary: #a89984;
+  --color-info: #74b3ce;
+  --color-success: #89c07d;
+  --color-error: #e57373;
+  --color-warning: #f5c156;
+  --color-background: #1a1a1a;
+  --color-surface: #222222;
+  --color-card: #222222;
+
+  --color-primary-hover: #8090a8;
+  --color-secondary-hover: #b4a58d;
+  --color-primary-border: #5b6a7c;
+  --color-secondary-border: #8b7d6a;
+
+  --color-text: #ececec;
+  --color-text-secondary: #b8b8b8;
+  --color-text-muted: #7c7c7c;
+
+  --color-background-alt: #232323;
+  --color-background-hover: #2a2a2a;
+  --color-background-disabled: #3b3b3b;
+
+  --color-surface-border: #3a3a3a;
+  --color-surface-hover: #2c2c2c;
+
+  --color-input-bg: #2a2a2a;
+  --color-input-border: #4a4a4a;
+  --color-input-focus: #74b3ce;
+
+  --color-card-bg: #222222;
+  --color-card-border: #3a3a3a;
+
+  --color-btn-primary-text: #ffffff;
+  --color-btn-secondary-text: #e0e0e0;
+  --color-btn-disabled-bg: #2f2f2f;
+  --color-btn-disabled-text: #777777;
+
+  --color-border: #434343;
+  --color-overlay: rgba(0, 0, 0, 0.6);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
 @layer base {
-  :root {
-    --primary: #2c3e50;
-    --secondary: #b0a695;
-    --text: #2e2e2e;
-    --info: #5a9bd5;
-    --success: #4e9f3d;
-    --error: #c0392b;
-    --warning: #e8a317;
-    --border: #dadada;
-    --background: #f9f7f3;
-
-    --primary-hover: #34495e;
-    --secondary-hover: #a48f7d;
-    --primary-border: #5e6e80;
-    --secondary-border: #c2b9a8;
-
-    --text-secondary: #6b6b6b;
-    --text-muted: #9a9a9a;
-
-    --background-alt: #f2efe9;
-    --background-hover: #ece8e1;
-    --background-disabled: #edecea;
-
-    --btn-primary-text: #ffffff;
-    --btn-secondary-text: #2c3e50;
-    --btn-disabled-bg: #e0dfdc;
-    --btn-disabled-text: #a0a0a0;
-
-    --surface: #ffffff;
-    --surface-border: #e1e1e1;
-    --surface-hover: #f3f1ec;
-
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.08);
-    --shadow-lg: 0 6px 16px rgba(0, 0, 0, 0.12);
-
-    --input-bg: #ffffff;
-    --input-border: #cfcfcf;
-    --input-focus: #5a9bd5;
-
-    --overlay: rgba(0, 0, 0, 0.35);
-    --gradient-primary: linear-gradient(135deg, #2c3e50 0%, #b0a695 100%);
-
-    --card-bg: #ffffff;
-    --card-border: #e3e1dc;
-  }
-
-  .dark {
-    --primary: #6b7a8f;
-    --secondary: #a89984;
-    --text: #ececec;
-    --info: #74b3ce;
-    --success: #89c07d;
-    --error: #e57373;
-    --warning: #f5c156;
-    --border: #434343;
-    --background: #1a1a1a;
-
-    --primary-hover: #8090a8;
-    --secondary-hover: #b4a58d;
-    --primary-border: #5b6a7c;
-    --secondary-border: #8b7d6a;
-
-    --text-secondary: #b8b8b8;
-    --text-muted: #7c7c7c;
-
-    --background-alt: #232323;
-    --background-hover: #2a2a2a;
-    --background-disabled: #3b3b3b;
-
-    --btn-primary-text: #ffffff;
-    --btn-secondary-text: #e0e0e0;
-    --btn-disabled-bg: #2f2f2f;
-    --btn-disabled-text: #777777;
-
-    --surface: #222222;
-    --surface-border: #3a3a3a;
-    --surface-hover: #2c2c2c;
-
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.35);
-    --shadow-lg: 0 6px 16px rgba(0, 0, 0, 0.45);
-
-    --input-bg: #2a2a2a;
-    --input-border: #4a4a4a;
-    --input-focus: #74b3ce;
-
-    --overlay: rgba(0, 0, 0, 0.6);
-    --gradient-primary: linear-gradient(135deg, #6b7a8f 0%, #a89984 100%);
-
-    --card-bg: #222222;
-    --card-border: #3a3a3a;
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
   }
 
   html {
@@ -101,8 +112,8 @@
   }
 
   body {
-    background-color: var(--background);
-    color: var(--text);
+    background-color: var(--color-background);
+    color: var(--color-text);
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
       'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
     font-size: 16px;
@@ -112,19 +123,14 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  .dark body {
-    background-color: var(--background);
-    color: var(--text);
-  }
-
   a {
-    color: var(--primary);
+    color: var(--color-primary);
     text-decoration: none;
     transition: color 0.2s ease;
   }
 
   a:hover {
-    color: var(--primary-hover);
+    color: var(--color-primary-hover);
     text-decoration: underline;
   }
 
@@ -147,9 +153,9 @@
   select {
     font-family: inherit;
     font-size: 1rem;
-    color: var(--text);
-    background-color: var(--input-bg);
-    border: 1px solid var(--input-border);
+    color: var(--color-text);
+    background-color: var(--color-input-bg);
+    border: 1px solid var(--color-input-border);
     border-radius: 6px;
     padding: 0.5rem 0.75rem;
     transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
@@ -159,21 +165,21 @@
   textarea:focus,
   select:focus {
     outline: none;
-    border-color: var(--input-focus);
+    border-color: var(--color-input-focus);
     box-shadow: 0 0 0 3px rgba(90, 155, 213, 0.25);
   }
 
   input:disabled,
   textarea:disabled,
   select:disabled {
-    background-color: var(--background-disabled);
-    color: var(--text-muted);
+    background-color: var(--color-background-disabled);
+    color: var(--color-text-muted);
     cursor: not-allowed;
   }
 
   .card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--card-border);
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-card-border);
     border-radius: 12px;
     box-shadow: var(--shadow-sm);
     transition: box-shadow 0.2s ease, transform 0.2s ease;
@@ -184,26 +190,8 @@
     transform: translateY(-2px);
   }
 
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: var(--secondary);
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--secondary-hover);
-  }
-
-  ::-webkit-scrollbar-track {
-    background-color: var(--background-alt);
-  }
-
   ::selection {
-    background-color: var(--primary);
-    color: var(--btn-primary-text);
+    background-color: var(--color-primary);
+    color: var(--color-btn-primary-text);
   }
 }
